@@ -1,6 +1,14 @@
 async function fetchPokemonData() {
+  // Create an AbortController and get its signal
+  const controller = new AbortController();
+  const signal = controller.signal;
+
   try {
-    const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=151");
+    // Make the initial fetch request with the signal
+    const response = await fetch(
+      "https://pokeapi.co/api/v2/pokemon?limit=151",
+      { signal }
+    );
     const data = await response.json();
 
     // Array to store information about each Pokemon
@@ -8,7 +16,7 @@ async function fetchPokemonData() {
 
     // Iterate through the list of Pokemon and fetch additional details
     for (const pokemon of data.results) {
-      const pokemonResponse = await fetch(pokemon.url);
+      const pokemonResponse = await fetch(pokemon.url, { signal });
       const pokemonData = await pokemonResponse.json();
 
       // Extracting relevant information
@@ -30,7 +38,12 @@ async function fetchPokemonData() {
     // Log the result to the console
     console.log(pokemonInfo);
   } catch (error) {
-    console.error("Error fetching Pokemon data:", error);
+    // Check if the error is due to the fetch being aborted
+    if (error.name === "AbortError") {
+      console.log("Fetch aborted");
+    } else {
+      console.error("Error fetching Pokemon data:", error);
+    }
   }
 }
 
