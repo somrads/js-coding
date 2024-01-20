@@ -4,13 +4,13 @@ async function fetchPokemonData() {
   const signal = controller.signal;
 
   try {
-    const response = await fetch("https://pokeapi.co/api/v2/pokemon", { signal });
+    const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=151", { signal });
     const data = await response.json();
 
     // Assuming you want to display all Pokemon in your HTML
     const pokemonArray = data.results;
 
-    for (const pokemon of pokemonArray) {
+    for (const [index, pokemon] of pokemonArray.entries()) {
       const pokemonResponse = await fetch(pokemon.url, { signal });
       const pokemonData = await pokemonResponse.json();
 
@@ -24,10 +24,10 @@ async function fetchPokemonData() {
       image.alt = pokemonData.name;
       image.setAttribute("srcset", "");
 
-      // Create name element
+      // Create name and number element
       const nameElement = document.createElement("h3");
       nameElement.className = "name";
-      nameElement.textContent = pokemonData.name;
+      nameElement.textContent = `#${index + 1} ${pokemonData.name}`;
 
       // Create type dropdown
       const typeDropdown = document.createElement("select");

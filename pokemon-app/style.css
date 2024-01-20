@@ -1,12 +1,13 @@
 body {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Change to auto-fill */
   gap: 20px;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh; /* Set a minimum height to allow for scrolling */
   background-color: #f0f0f0;
   margin: 0;
+  overflow-y: auto; /* Enable vertical scrolling */
 }
 
 h1{
