@@ -1,12 +1,17 @@
+import Team from "./Team.js";
+
 // Wrap your code in the window.onload event to ensure it runs after the window has loaded
-window.onload = function() {
+window.onload = function () {
   async function fetchPokemonData() {
     // Create an AbortController and get its signal
     const controller = new AbortController();
     const signal = controller.signal;
 
     try {
-      const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=151", { signal });
+      const response = await fetch(
+        "https://pokeapi.co/api/v2/pokemon?limit=151",
+        { signal }
+      );
       const data = await response.json();
 
       // Assuming you want to display all Pokemon in your HTML
@@ -40,7 +45,8 @@ window.onload = function() {
         for (const type of pokemonData.types) {
           const option = document.createElement("option");
           option.value = type.type.name;
-          option.textContent = type.type.name.charAt(0).toUpperCase() + type.type.name.slice(1);
+          option.textContent =
+            type.type.name.charAt(0).toUpperCase() + type.type.name.slice(1);
           typeDropdown.appendChild(option);
         }
 
@@ -60,13 +66,16 @@ window.onload = function() {
       }
     } catch (error) {
       // Check if the error is due to the fetch being aborted
-      if (error.name === 'AbortError') {
-        console.log('Fetch aborted');
+      if (error.name === "AbortError") {
+        console.log("Fetch aborted");
       } else {
         console.error("Error fetching Pokemon data:", error);
       }
     }
   }
+  const myTeam = new Team("Team Rocket", "Jessie");
+  const descriptionDiv = document.querySelector(".description");
+  descriptionDiv.textContent = myTeam.describe();
 
   // Call the function to initiate the fetching process
   fetchPokemonData();

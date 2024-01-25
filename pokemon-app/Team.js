@@ -1,14 +1,20 @@
 class Team {
   constructor(teamname, trainer, roster) {
-    // Assign the passed values to class properties using 'this'
     this.teamname = teamname;
     this.trainer = trainer;
-    this.roster = roster || []; // Initialize roster as an empty array if not provided
+    this.roster = roster || [];
   }
 
   describe() {
-    // Use the class properties to generate the description
-    let text = `Trainer "${this.trainer}" has added ${this.teamname} to his roster. There are now ${this.roster.length} Pokémon(s) in your roster.`;
+    let text = `Trainer "${this.trainer}" has added ${this.teamname} to his roster.`;
+
+    if (this.roster.length > 0) {
+      const pokemonNames = [...this.roster].map((pokemon) => pokemon.name);
+      text += ` The Pokémon in your roster are: ${pokemonNames.join(", ")}.`;
+    } else {
+      text += " There are currently no Pokémon in your roster.";
+    }
+
     return text;
   }
 }
