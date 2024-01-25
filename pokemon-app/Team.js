@@ -7,7 +7,7 @@ class Team {
   }
 
   describe() {
-    let text = `Trainer "${this.trainer}" has added ${this.teamname} to his roster.`;
+    let text = `Team "${this.teamname}" with trainer ${this.trainer} to his roster.`;
 
     if (this.roster.length > 0) {
       const pokemonNames = [...this.roster].map((pokemon) => pokemon.name);
