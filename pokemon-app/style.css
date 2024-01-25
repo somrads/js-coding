@@ -1,17 +1,39 @@
+/* styles.css */
+
 body {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Change to auto-fill */
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 20px;
   justify-content: center;
   align-items: center;
-  min-height: 100vh; /* Set a minimum height to allow for scrolling */
+  min-height: 100vh;
   background-color: #f0f0f0;
   margin: 0;
-  overflow-y: auto; /* Enable vertical scrolling */
+  overflow-y: auto;
 }
 
-h1{
-  color: red;
+h1 {
+  color: #333;
+  text-align: center;
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.result-message,
+.description {
+  text-align: center;
+  font-size: 1.2em;
+  margin-bottom: 20px;
+  color: #555;
+}
+
+.result-message {
+  font-weight: bold;
+  color: #4caf50; /* Green color for success message */
+}
+
+.description {
+  font-style: italic;
 }
 
 .pokemon-card {
