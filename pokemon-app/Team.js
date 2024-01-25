@@ -1,3 +1,4 @@
+// Team.js
 class Team {
   constructor(teamname, trainer, roster) {
     this.teamname = teamname;
@@ -16,6 +17,19 @@ class Team {
     }
 
     return text;
+  }
+
+  addPokemon(pokemon) {
+    if (this.roster.length >= 6) {
+      return "The roster is full!";
+    }
+
+    if (this.roster.some((p) => p.name === pokemon.name)) {
+      return "This pokemon is already part of your roster!";
+    }
+
+    this.roster.push(pokemon);
+    return `The Pokémon ${pokemon.name} has been successfully added to the team!`;
   }
 }
 
