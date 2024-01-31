@@ -10,14 +10,14 @@ function showForm() {
 }
 
 function submitForm() {
-  let selectedMonth = document.getElementById('months').value;
-  let eventName = document.getElementById('eventName').value;
-  let eventDate = document.getElementById('eventDate').value;
+  let selectedMonth = document.getElementById("months").value;
+  let eventName = document.getElementById("eventName").value;
+  let eventDate = document.getElementById("eventDate").value;
 
   if (selectedMonth !== "" && eventName !== "" && eventDate !== "") {
     // Handle form submission here (e.g., send data to the server)
-    alert('Form submitted!');
+    alert("Form submitted!");
   } else {
-    alert('Please fill in all required fields.');
+    alert("Please fill in all required fields.");
   }
 }
