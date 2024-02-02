@@ -19,7 +19,7 @@ function submitForm() {
   let eventDate = document.getElementById("eventDate").value;
 
   if (selectedMonth !== "" && eventName !== "" && eventDate !== "") {
-    // Use jsPDF here
+
     const doc = new jsPDF();
     doc.text(`Month: ${selectedMonth}`, 20, 20);
     doc.text(`Event Name: ${eventName}`, 20, 30);
