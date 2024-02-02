@@ -7,7 +7,7 @@ class Team {
   }
 
   describe() {
-    let text = `Team "${this.teamname}" with trainer ${this.trainer} to his roster.`;
+    let text = `Team "${this.teamname}" with trainer ${this.trainer}.`;
 
     if (this.roster.length > 0) {
       const pokemonNames = [...this.roster].map((pokemon) => pokemon.name);
@@ -25,11 +25,13 @@ class Team {
     }
 
     if (this.roster.some((p) => p.name === pokemon.name)) {
-      return "This pokemon is already part of your roster!";
+      return alert("This pokemon is already part of your roster!");
     }
 
     this.roster.push(pokemon);
-    return `The Pokémon ${pokemon.name} has been successfully added to the team!`;
+    return alert(
+      `The Pokémon ${pokemon.name} has been successfully added to the team!`
+    );
   }
 }
 

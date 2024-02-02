@@ -2,17 +2,15 @@ import Team from "./Team.js";
 
 // Wrap your code in the window.onload event to ensure it runs after the window has loaded
 window.onload = function () {
+  const myTeam = new Team("Rocket", "Jessie");
   // Function to handle adding a Pokémon to the team
   function handleAddToTeam(pokemon) {
     const resultMessage = myTeam.addPokemon(pokemon);
 
-    // Display the result message on the top of the page
-    const resultDiv = document.querySelector(".result-message");
-    resultDiv.textContent = resultMessage;
+    localStorage.setItem("resultMessage", resultMessage);
 
-    // Update the description text
-    const descriptionDiv = document.querySelector(".description");
-    descriptionDiv.textContent = myTeam.describe();
+    // Store the description in local storage
+    localStorage.setItem("teamDescription", myTeam.describe());
   }
 
   // Function to create a Pokemon card and attach the event listener to the "Add to team" button
@@ -100,9 +98,6 @@ window.onload = function () {
       }
     }
   }
-
-  const myTeam = new Team("Team Rocket", "Jessie");
-
   // Call the function to initiate the fetching process
   fetchPokemonData();
 };
