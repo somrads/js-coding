@@ -11,6 +11,8 @@ window.onload = function () {
 
     // Store the description in local storage
     localStorage.setItem("teamDescription", myTeam.describe());
+
+    return alert(resultMessage)
   }
 
   // Function to create a Pokemon card and attach the event listener to the "Add to team" button

@@ -9,5 +9,4 @@ window.onload = function () {
 
   const descriptionDiv = document.getElementById("teamDescription");
   descriptionDiv.textContent = storedTeamDescription;
-
 };
