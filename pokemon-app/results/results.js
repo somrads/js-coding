@@ -21,7 +21,7 @@ window.onload = function () {
 
     try {
       const response = await fetch(
-        "https://pokeapi.co/api/v2/pokemon/bulbasaur",
+        `https://pokeapi.co/api/v2/pokemon/${storedPokemonName}`,
         {
           signal,
         }
