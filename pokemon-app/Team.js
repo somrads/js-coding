@@ -25,14 +25,11 @@ class Team {
     }
 
     if (this.roster.some((p) => p.name === pokemon.name)) {
-      return ("This pokemon is already part of your roster!");
-
+      return "This pokemon is already part of your roster!";
     }
 
     this.roster.push(pokemon);
-    return (
-      `The Pokémon ${pokemon.name} has been successfully added to the team!`
-    );
+    return `The Pokémon "${pokemon.name}" has been successfully added to the team!`;
   }
 }
 

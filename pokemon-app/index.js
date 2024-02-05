@@ -7,12 +7,16 @@ window.onload = function () {
   function handleAddToTeam(pokemon) {
     const resultMessage = myTeam.addPokemon(pokemon);
 
+    const addedPokemonName = resultMessage.match(/"(.*?)"/)[1];
+
     localStorage.setItem("resultMessage", resultMessage);
+
+    localStorage.setItem("addedPokemonName", addedPokemonName);
 
     // Store the description in local storage
     localStorage.setItem("teamDescription", myTeam.describe());
 
-    return alert(resultMessage)
+    return alert(resultMessage);
   }
 
   // Function to create a Pokemon card and attach the event listener to the "Add to team" button
