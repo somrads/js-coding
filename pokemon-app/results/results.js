@@ -1,8 +1,8 @@
-window.onload = function () {
+window.onload = async function () {
   // Retrieve data from local storage
   const storedResultMessage = localStorage.getItem("resultMessage");
   const storedTeamDescription = localStorage.getItem("teamDescription");
-  const storedPokemonName = localStorage.getItem("pokemonName");
+  const storedPokemonName = localStorage.getItem("addedPokemonName");
 
   // Display the retrieved data in the corresponding div boxes
   const resultDiv = document.getElementById("resultMessage");
@@ -27,11 +27,6 @@ window.onload = function () {
 
       // Assuming the data is an object with relevant information
       const { id, name, types, sprites } = data;
-
-      // Log the details
-      console.log("Number:", id);
-      console.log("Name:", name);
-      console.log("Types:", types);
 
       // Create Pokemon card element
       const pokemonCard = document.createElement("div");
@@ -70,6 +65,7 @@ window.onload = function () {
       });
 
       // Append elements to the Pokemon card
+      pokemonCard.appendChild(image);
       pokemonCard.appendChild(numberElement);
       pokemonCard.appendChild(nameElement);
       pokemonCard.appendChild(typeElement);
@@ -88,5 +84,5 @@ window.onload = function () {
   }
 
   // Call the function to initiate the fetching process
-  fetchPokemonData();
+  await fetchPokemonData();
 };
