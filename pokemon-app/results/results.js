@@ -1,24 +1,24 @@
 window.onload = async function () {
+  console.log("page loaded");
   // Retrieve data from local storage
   const storedResultMessage = localStorage.getItem("resultMessage");
   const storedTeamDescription = localStorage.getItem("teamDescription");
-  const storedPokemonName = localStorage.getItem("addedPokemonName");
 
-  // Display the retrieved data in the corresponding div boxes
-  const resultDiv = document.getElementById("resultMessage");
-  resultDiv.textContent = storedResultMessage;
+  console.log("1",storedResultMessage, "2",storedTeamDescription);
 
-  const descriptionDiv = document.getElementById("teamDescription");
-  descriptionDiv.textContent = storedTeamDescription;
+  const storedPokemonData =
+    JSON.parse(localStorage.getItem("addedPokemonName")) || [];
 
-  async function fetchPokemonData() {
+  console.log("Stored Pokemon Data:", storedPokemonData);
+
+  async function fetchPokemonData(pokemonName) {
     // Create an AbortController and get its signal
     const controller = new AbortController();
     const signal = controller.signal;
 
     try {
       const response = await fetch(
-        `https://pokeapi.co/api/v2/pokemon/${storedPokemonName}`,
+        `https://pokeapi.co/api/v2/pokemon/${pokemonName}`,
         {
           signal,
         }
@@ -71,8 +71,9 @@ window.onload = async function () {
       pokemonCard.appendChild(typeElement);
       pokemonCard.appendChild(removeButton);
 
-      // Append the Pokemon card to the body
-      document.body.appendChild(pokemonCard);
+      // Append the Pokemon card to the "pokemonCard" div
+      const pokemonCardContainer = document.getElementById("pokemonCard");
+      pokemonCardContainer.appendChild(pokemonCard);
     } catch (error) {
       // Check if the error is due to the fetch being aborted
       if (error.name === "AbortError") {
@@ -83,6 +84,8 @@ window.onload = async function () {
     }
   }
 
-  // Call the function to initiate the fetching process
-  await fetchPokemonData();
+  // Loop through stored Pokemon data and fetch/display each Pokemon
+  for (const storedPokemonName of storedPokemonData) {
+    await fetchPokemonData(storedPokemonName);
+  }
 };
