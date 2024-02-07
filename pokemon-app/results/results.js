@@ -4,12 +4,10 @@ window.onload = async function () {
   const storedResultMessage = localStorage.getItem("resultMessage");
   const storedTeamDescription = localStorage.getItem("teamDescription");
 
-  console.log("1",storedResultMessage, "2",storedTeamDescription);
+  const storedPokemonNames = JSON.parse(localStorage.getItem("addedPokemonNames")) || [];
 
-  const storedPokemonData =
-    JSON.parse(localStorage.getItem("addedPokemonName")) || [];
-
-  console.log("Stored Pokemon Data:", storedPokemonData);
+  // console.log("storedResultMessage:", storedResultMessage);
+  // console.log("storedTeamDescription:", storedTeamDescription);
 
   async function fetchPokemonData(pokemonName) {
     // Create an AbortController and get its signal
@@ -85,7 +83,8 @@ window.onload = async function () {
   }
 
   // Loop through stored Pokemon data and fetch/display each Pokemon
-  for (const storedPokemonName of storedPokemonData) {
+  for (const storedPokemonName of storedPokemonNames) {
     await fetchPokemonData(storedPokemonName);
+    console.log("storedPokemonName", storedPokemonName);
   }
 };
