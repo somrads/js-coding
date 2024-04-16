@@ -1,0 +1,44 @@
+form {
+    max-width: 400px;
+    margin: 0 auto; /* Center the form horizontally */
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Style the input fields */
+input[type="text"],
+input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box; /* Ensures padding and border are included in the element's total width and height */
+}
+
+/* Style the submit button */
+button {
+    background-color: purple;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+/* Add some margin to the submit button */
+button {
+    margin-top: 10px;
+}
+
+/* Center the result div */
+.result {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#result{
+    text-align: center;
+}
